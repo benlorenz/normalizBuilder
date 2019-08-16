@@ -3,20 +3,22 @@
 using BinaryBuilder
 
 name = "normaliz"
-version = v"3.7.2"
+version = v"3.7.4"
 
 # Collection of sources required to build normaliz
 sources = [
     "https://github.com/Normaliz/Normaliz/releases/download/v$version/normaliz-$version.tar.gz" =>
-    "436a870a1ab9a5e0c2330f5900d904dc460938c17428db1c729318dbd9bf27aa",
+    "1b94ff9baa0ebbc682229e8cfad086245d67754958ae3ddb1cc0a563a16ceb89",
 
 ]
 
 # Bash recipe for building across all platforms
 script = raw"""
-cd normaliz-3.7.2
+cd normaliz-3.7.4
 # avoid libtool problems ....
 rm /workspace/destdir/lib/libgmpxx.la
+# add missing header
+sed -i -e 's#^nobase_include_HEADERS = #nobase_include_HEADERS = libnormaliz/output.h #' source/Makefile.am source/Makefile.in
 ./configure --prefix=$prefix --host=$target --with-gmp=$prefix --disable-scip
 make -j
 make install
