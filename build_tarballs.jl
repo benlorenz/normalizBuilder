@@ -3,18 +3,18 @@
 using BinaryBuilder
 
 name = "normaliz"
-version = v"3.7.4"
+version = v"3.8.4"
 
 # Collection of sources required to build normaliz
 sources = [
     "https://github.com/Normaliz/Normaliz/releases/download/v$version/normaliz-$version.tar.gz" =>
-    "1b94ff9baa0ebbc682229e8cfad086245d67754958ae3ddb1cc0a563a16ceb89",
+    "80d21ebaf1a2d472ccdc1e1b2e42b4d71f45f3b8df4d7195ff83edf38f8945c8",
 
 ]
 
 # Bash recipe for building across all platforms
 script = raw"""
-cd normaliz-3.7.4
+cd normaliz-3.8.4
 # avoid libtool problems ....
 rm /workspace/destdir/lib/libgmpxx.la
 # add missing header

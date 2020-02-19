@@ -38,7 +38,7 @@ jobs:
       if: tag IS present
 
 before_script:
-- julia -e 'using Pkg; pkg"add BinaryProvider"; pkg"add BinaryBuilder#master"; Pkg.build()'
+- julia -e 'using Pkg; pkg"add BinaryProvider"; pkg"add BinaryBuilder"; Pkg.build()'
 script:
 - julia  --color=yes build_tarballs.jl $TARGET
 deploy:
